@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { fetchRandomPokemon } from "./services/pokemon";
 import Cards from "./components/Card";
 import ScoreBoard from "./components/ScoreBoard";
 import GameOver from "./components/GameOver";
@@ -12,42 +13,41 @@ function App() {
 
     const [loading, setLoading] = useState(true);
 
-    useEffect(() =>{
-        if(!pokemonData) return // don't flag game over if data isn't done loading
-        if(selectedCards.length >= pokemonData.length){
-            setGameOver(true);
+    const fetchPokemon = async () => {
+        setLoading(true);
+        try {
+            const data = await fetchRandomPokemon();
+            setPokemonData(data);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
         }
-    },[selectedCards,pokemonData])
+    };
+
+
+    const resetGame = () => {
+        setScore(0);
+        setBestScore(0)
+        setSelectedCards([]);
+        setPokemonData(null)
+        fetchPokemon();
+        setGameOver(false);
+
+    }
 
     useEffect(() => {
-        setLoading(true)
-        const fetchPokemon = async () => {
-            const pokeSprites = []
-            try {
-                for (let i = 0; i <= 11; i++) {
-                    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1000) + 1}`);
-                    const result = await res.json();
-
-                    let speciesName = result.species.name;
-                    let name = speciesName.charAt(0).toUpperCase() + speciesName.slice(1);
-
-                    pokeSprites.push({
-                        name,
-                        sprite: result.sprites.front_default
-                    });
-                }
-                setPokemonData(pokeSprites)
-                setLoading(false)
-
-            } catch (err) {
-                console.error('Error ' + err)
-            }
+        if (!pokemonData) return // don't flag game over if data isn't done loading
+        if (selectedCards.length >= pokemonData.length) {
+            setGameOver(true);
         }
+    }, [selectedCards, pokemonData])
 
+    useEffect(() => {
         fetchPokemon();
     }, [])
 
-    if (gameOver) return <GameOver score={score} bestScore={bestScore} setBestScore={setBestScore} />
+    if (gameOver) return <GameOver score={score} bestScore={bestScore} setBestScore={setBestScore} resetGame={resetGame} />
     if (loading) return <main className="loading-container"><h1>Loading...</h1></main>
 
     return (
