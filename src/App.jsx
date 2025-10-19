@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import Cards from "./components/Card";
 import ScoreBoard from "./components/ScoreBoard";
+import GameOver from "./components/GameOver";
 
 function App() {
     const [data, setData] = useState(null);
     const [score, setScore] = useState(0)
-    const [bestScore, setBestScore] = useState(score);
+    const [bestScore, setBestScore] = useState(0);
     const [selectedCards, setSelectedCards] = useState([]);
+    const [gameOver, setGameOver] = useState(false);
 
     const [loading, setLoading] = useState(true);
 
@@ -36,16 +38,16 @@ function App() {
         fetchPokemon();
     }, [])
 
+    if (gameOver) return <GameOver score={score} bestScore={bestScore} setBestScore={setBestScore} />
     if (loading) return <div>Loading...</div>
 
     return (
         <>
             <header className="header">
                 <h1>Memory Card Game</h1>
-                <h2>Get points by clicking the images but, don't click the same one twice!</h2>
             </header>
 
-            <ScoreBoard score={score} bestScore={bestScore} setBestScore={setBestScore}/>
+            <ScoreBoard score={score} bestScore={bestScore} setBestScore={setBestScore} />
 
             <main>
                 <div className="card-container">

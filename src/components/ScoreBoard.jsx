@@ -10,8 +10,8 @@ useEffect(() => {
 
     return(
         <div className="score-board">
-            <h4>Score: {score}</h4>
-            <h4>Best Score: {bestScore}</h4>
+            <h2>Score: {score}</h2>
+            <h2>Best Score: {bestScore}</h2>
         </div>
     )
 

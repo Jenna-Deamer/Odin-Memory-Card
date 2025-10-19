@@ -7,7 +7,20 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-image: linear-gradient(161deg, rgba(117, 117, 117, 0.03) 0%, rgba(117, 117, 117, 0.03) 50%, rgba(8, 8, 8, 0.03) 50%, rgba(8, 8, 8, 0.03) 100%),
+        linear-gradient(59deg, rgba(245, 245, 245, 0.05) 0%, rgba(245, 245, 245, 0.05) 50%, rgba(68, 68, 68, 0.05) 50%, rgba(68, 68, 68, 0.05) 100%),
+        linear-gradient(286deg, rgba(107, 107, 107, 0.07) 0%, rgba(107, 107, 107, 0.07) 50%, rgba(7, 7, 7, 0.07) 50%, rgba(7, 7, 7, 0.07) 100%),
+        linear-gradient(123deg, rgba(9, 9, 9, 0.09) 0%, rgba(9, 9, 9, 0.09) 50%, rgba(120, 120, 120, 0.09) 50%, rgba(120, 120, 120, 0.09) 100%),
+        linear-gradient(170deg, rgba(202, 202, 202, 0.01) 0%, rgba(202, 202, 202, 0.01) 50%, rgba(19, 19, 19, 0.01) 50%, rgba(19, 19, 19, 0.01) 100%),
+        linear-gradient(210deg, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(4, 4, 4, 0.04) 50%, rgba(4, 4, 4, 0.04) 100%),
+        linear-gradient(90deg, rgb(249, 17, 190), rgb(100, 28, 213));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
 }
+
 
 body,
 html {
@@ -47,11 +60,10 @@ h6 {
     text-wrap: balance;
 }
 
-header{
+header {
     text-align: center;
     margin: 1em 0;
 }
-
 
 main {
     max-width: 1000px;
@@ -68,7 +80,7 @@ main {
 
 }
 
-.card{
+.card {
     outline: 1px solid black;
     padding: .2em .5em;
     display: flex;
@@ -77,15 +89,25 @@ main {
     align-items: center;
     height: 200px;
 }
-.card img{
+
+.card img {
     height: 150px;
     width: auto;
     margin-bottom: .5em;
 }
 
-.score-board{
+.score-board {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2em;
+}
+
+.game-over-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
