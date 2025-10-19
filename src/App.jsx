@@ -5,12 +5,13 @@ import APIService from './APIService'
 function App() {
 
 
-  return (
-    <>
-    <APIService/>
-     <h1>Memory Card Game</h1>
-    </>
-  )
+    return (
+        <>
+
+            <h1>Memory Card Game</h1>
+            <APIService />
+        </>
+    )
 }
 
 export default App
