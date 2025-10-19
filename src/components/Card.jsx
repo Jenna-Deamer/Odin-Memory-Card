@@ -2,7 +2,6 @@ function Cards({ data, selectedCards, setSelectedCards, setScore }) {
 
     const handleCardClick = (selectedCard) => {
         console.log('clicked ' + selectedCard)
-
         // if in selectedList  minus point else add
         if (selectedCards.includes(selectedCard)) {
             setScore(prev => prev - 1)
@@ -10,7 +9,6 @@ function Cards({ data, selectedCards, setSelectedCards, setScore }) {
             setScore(prev => prev + 1)
             setSelectedCards(selectedCards => [...selectedCards, selectedCard]);
         }
-
         ShuffleCards()
     }
 

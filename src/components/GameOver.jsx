@@ -5,6 +5,7 @@ function GameOver({ score, bestScore, setBestScore }) {
         <div className="game-over-container">
             <h1>Game Over!</h1>
             <ScoreBoard score={score} bestScore={bestScore} setBestScore={setBestScore} />
+            <button>Replay</button>
         </div>
     );
 }

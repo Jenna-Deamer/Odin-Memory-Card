@@ -114,3 +114,9 @@ main {
     align-items: center;
     height: 100vh;
 }
+
+.game-over-container button{
+    margin-top: 1em;
+    width: 100px;
+    cursor: pointer;
+}

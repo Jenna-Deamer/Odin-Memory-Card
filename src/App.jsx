@@ -12,6 +12,13 @@ function App() {
 
     const [loading, setLoading] = useState(true);
 
+    useEffect(() =>{
+        if(!data) return // don't flag game over if data isn't done loading
+        if(selectedCards.length >= data.length){
+            setGameOver(true);
+        }
+    },[selectedCards,data])
+
     useEffect(() => {
         setLoading(true)
         const fetchPokemon = async () => {
