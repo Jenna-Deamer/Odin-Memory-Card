@@ -47,9 +47,32 @@ h6 {
     text-wrap: balance;
 }
 
-h1 {
+header{
     text-align: center;
-    margin-top: 1em;
+    margin: 1em 0;
 }
 
 
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+
+}
+
+.card{
+    outline: 1px solid black;
+    padding: .2em .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

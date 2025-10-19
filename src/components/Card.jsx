@@ -1,12 +1,33 @@
-function Cards({ data }) {
-    // console.log(data)
+function Cards({ data, selectedCards, setSelectedCards, score, setScore }) {
+
+    const handleCardClick = (selectedCard) => {
+        console.log('clicked ' + selectedCard)
+
+        // if in selectedList  minus point else add
+        if (selectedCards.includes(selectedCard)) {
+            setScore(prev => prev - 1)
+        } else {
+            setScore(prev => prev + 1)
+            setSelectedCards(selectedCard)
+        }
+
+        ShuffleCards()
+    }
+
+    const ShuffleCards = () => {
+
+    }
+
     return (
         <>
             {data?.map((pokemon) => (
-                <div key={pokemon.name}>
-                    <img src={pokemon.sprite} alt={pokemon.name} />
-                    <p>{pokemon.name}</p>
-                </div>
+                <button onClick={() => handleCardClick(pokemon.name)}>
+                    <div key={pokemon.name} className="card">
+                        <img src={pokemon.sprite} alt={pokemon.name} />
+                        <h3>{pokemon.name}</h3>
+                    </div>
+                </button>
+
             ))}
         </>
     );
