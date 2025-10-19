@@ -73,6 +73,12 @@ main {
     margin: 0 auto;
 }
 
+.loading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);

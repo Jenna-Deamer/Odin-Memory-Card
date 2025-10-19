@@ -6,7 +6,7 @@ useEffect(() => {
   if (score > bestScore) {
     setBestScore(score);
   }
-}, [score]); 
+}, [score, setBestScore, bestScore]); 
 
     return(
         <div className="score-board">
