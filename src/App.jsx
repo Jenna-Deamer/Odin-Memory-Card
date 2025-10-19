@@ -22,8 +22,11 @@ function App() {
                     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1000) + 1}`);
                     const result = await res.json();
 
+                    let speciesName = result.species.name;
+                    let name = speciesName.charAt(0).toUpperCase() + speciesName.slice(1);
+
                     pokeSprites.push({
-                        name: result.name,
+                        name,
                         sprite: result.sprites.front_default
                     });
                 }
