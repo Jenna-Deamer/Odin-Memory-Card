@@ -21,7 +21,7 @@ function Cards({ pokemonData, selectedCards, setSelectedCards, setScore }) {
         // Wait for animation to finish before shuffling
         setTimeout(() => {
             setAnimatingCard(null);
-            // ShuffleCards();
+            ShuffleCards();
         }, 400); // animation duration
     };
 
