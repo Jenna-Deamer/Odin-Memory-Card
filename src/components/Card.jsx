@@ -1,4 +1,4 @@
-function Cards({ data, selectedCards, setSelectedCards, score, setScore }) {
+function Cards({ data, selectedCards, setSelectedCards, setScore }) {
 
     const handleCardClick = (selectedCard) => {
         console.log('clicked ' + selectedCard)
@@ -8,7 +8,7 @@ function Cards({ data, selectedCards, setSelectedCards, score, setScore }) {
             setScore(prev => prev - 1)
         } else {
             setScore(prev => prev + 1)
-            setSelectedCards(selectedCard)
+            setSelectedCards(selectedCards => [...selectedCards, selectedCard]);
         }
 
         ShuffleCards()
@@ -21,10 +21,13 @@ function Cards({ data, selectedCards, setSelectedCards, score, setScore }) {
     return (
         <>
             {data?.map((pokemon) => (
-                <button onClick={() => handleCardClick(pokemon.name)}>
-                    <div key={pokemon.name} className="card">
+                <button key={pokemon.name} onClick={() => handleCardClick(pokemon.name)}>
+                    <div className="card">
                         <img src={pokemon.sprite} alt={pokemon.name} />
-                        <h3>{pokemon.name}</h3>
+                        <div className="card-footer">
+                             <h3>{pokemon.name}</h3>
+                        </div>
+                       
                     </div>
                 </button>
 

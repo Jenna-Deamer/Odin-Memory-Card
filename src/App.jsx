@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Cards from "./components/Card";
+import ScoreBoard from "./components/ScoreBoard";
 
 function App() {
     const [data, setData] = useState(null);
@@ -37,20 +38,18 @@ function App() {
 
     if (loading) return <div>Loading...</div>
 
-
-    console.log(data)
-
     return (
         <>
             <header className="header">
                 <h1>Memory Card Game</h1>
                 <h2>Get points by clicking the images but, don't click the same one twice!</h2>
-                <span><b>Current Score: {score}</b> <b>Best Score: {bestScore}</b></span>
             </header>
+
+            <ScoreBoard score={score} bestScore={bestScore} setBestScore={setBestScore}/>
 
             <main>
                 <div className="card-container">
-                    <Cards data={data} selectedCards={selectedCards} setSelectedCards={setSelectedCards} score={score} setScore={setScore} />
+                    <Cards data={data} selectedCards={selectedCards} setSelectedCards={setSelectedCards} setScore={setScore} />
                 </div>
 
             </main>

@@ -75,4 +75,17 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 200px;
+}
+.card img{
+    height: 150px;
+    width: auto;
+    margin-bottom: .5em;
+}
+
+.score-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
 }
