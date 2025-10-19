@@ -28,7 +28,6 @@ function App() {
 
     const resetGame = () => {
         setScore(0);
-        setBestScore(0)
         setSelectedCards([]);
         setPokemonData(null)
         fetchPokemon();
