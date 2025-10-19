@@ -1,45 +1,53 @@
+import { useState } from 'react';
+
 function Cards({ pokemonData, selectedCards, setSelectedCards, setScore }) {
+    const [animatingCard, setAnimatingCard] = useState(null);
+    const [animationType, setAnimationType] = useState('');
 
     const handleCardClick = (selectedCard) => {
-        console.log('clicked ' + selectedCard)
-        // if in selectedList  minus point else add
-        if (selectedCards.includes(selectedCard)) {
-            setScore(prev => prev - 1)
+        let isWrong = selectedCards.includes(selectedCard);
+
+        if (isWrong) {
+            setScore(prev => prev - 1);
+            setAnimationType('shake-wrong');
         } else {
-            setScore(prev => prev + 1)
-            setSelectedCards(selectedCards => [...selectedCards, selectedCard]);
+            setScore(prev => prev + 1);
+            setSelectedCards(cards => [...cards, selectedCard]);
+            setAnimationType('shake-right');
         }
 
-        ShuffleCards()
-    }
+        setAnimatingCard(selectedCard);
+
+        // Wait for animation to finish before shuffling
+        setTimeout(() => {
+            setAnimatingCard(null);
+            ShuffleCards();
+        }, 400); // animation duration
+    };
+
 
     function ShuffleCards() {
-        // Iterate over the array in reverse order
         for (let i = pokemonData.length - 1; i > 0; i--) {
-
-            // Generate Random Index
             const j = Math.floor(Math.random() * (i + 1));
-
-            // Swap elements
             [pokemonData[i], pokemonData[j]] = [pokemonData[j], pokemonData[i]];
         }
-        return pokemonData;
     }
-
 
     return (
         <>
             {pokemonData?.map((pokemon) => (
-                <button key={pokemon.name} onClick={() => handleCardClick(pokemon.name)}>
+                <button
+                    key={pokemon.name}
+                    onClick={() => handleCardClick(pokemon.name)}
+                    className={`card-button ${animatingCard === pokemon.name ? animationType : ''}`}
+                >
                     <div className="card">
                         <img src={pokemon.sprite} alt={pokemon.name} />
                         <div className="card-footer">
                             <h3>{pokemon.name}</h3>
                         </div>
-
                     </div>
                 </button>
-
             ))}
         </>
     );
